@@ -1,23 +1,22 @@
 <template>
   <div class="home">
-    <img :src="this.bgImage" alt="picture">
-    hello
+    <Banner :banner = "bannerMovie"/>
   </div>
 </template>
 
 <script>
 import axios from 'axios';
-
+import Banner from "@/components/Banner.vue"
 
 export default {
   name: 'HomeView',
   components: {
+    Banner
   },
   data() {
     return {
-      movies: null,
-      bannerMovie: null,
-      bgImage: null
+      movies: {},
+      bannerMovie: {},
     }
   },
   methods: {
@@ -25,7 +24,6 @@ export default {
       try {
         const response = await axios.get('https://api.themoviedb.org/3/movie/popular?api_key=4e44d9029b1270a757cddc766a1bcb63&language=en-US')
         this.movies = response.data.results
-        console.log(this.movies)
       } catch (error) {
         console.log(error)
       }
@@ -39,12 +37,11 @@ export default {
   },
   watch: {
     movies() {
-      this.bannerMovie = this.movies[this.getRandomInt(0, this.movies.length - 1)]
-      this.bgImage = `https://image.tmdb.org/t/p/original${this.bannerMovie.backdrop_path}`
+      this.bannerMovie = this.movies[this.getRandomInt(0, this.movies.length - 1)];
     },
-    // bannerMovie() {
-    //   this.bgImage = `https://image.tmdb.org/t/p/original${this.bannerMovie.backdrop_path}`
-    // }
   }
 }
 </script>
+
+<style>
+</style>
