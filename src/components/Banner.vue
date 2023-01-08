@@ -3,14 +3,21 @@
         <div class="movie-info">
             <h1 class="movie-info_title">{{ banner.title }}</h1>
             <p>{{ banner.overview }}</p>
+            <my-button>
+                View more
+            </my-button>
         </div>
     </div>
 </template>
 
 <script>
 import getImage from '@/lib/getImage';
+import MyButton from '@/components/UI/myButton.vue';
 
 export default {
+    components: {
+        MyButton
+    },
     props: {
         banner: {
             type: Object,
@@ -43,6 +50,7 @@ export default {
 }
 .movie-info{
     color: aliceblue;
+    padding-left: 30px;
     display: flex;
     flex-direction: column;
     justify-content: center;
