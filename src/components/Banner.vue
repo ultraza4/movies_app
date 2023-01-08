@@ -1,8 +1,8 @@
 <template>
-    <div class="banner_wrapper" :style="backgroundImageInlineStyle" >
+    <div class="banner_wrapper" :style="backgroundImageInlineStyle">
         <div class="movie-info">
             <h1 class="movie-info_title">{{ banner.title }}</h1>
-            <p>{{ banner.overview }}</p>
+            <p>{{ this.discription }}</p>
             <my-button>
                 View more
             </my-button>
@@ -27,16 +27,18 @@ export default {
     data() {
         return {
             bgImage: '',
+            discription: ''
         }
     },
     computed: {
         backgroundImageInlineStyle() {
-            return `background-image: url(${this.bgImage})` 
+            return `background-image: url(${this.bgImage})`
         },
     },
     watch: {
         banner() {
             this.bgImage = getImage(this.banner.backdrop_path)
+            this.discription = this.banner.overview.length <= 200 ? this.banner.overview : this.banner.overview.slice(0, 200) + "..."
         }
     }
 }
@@ -48,7 +50,8 @@ export default {
     height: 100vh;
     background-size: cover;
 }
-.movie-info{
+
+.movie-info {
     color: aliceblue;
     padding-left: 30px;
     display: flex;
@@ -57,12 +60,14 @@ export default {
     height: 100%;
     background: linear-gradient(to right, black, transparent);
 }
+
 .movie-info_title {
     font-size: 3rem;
     font-family: 'Times New Roman', Times, serif;
     font-weight: bold;
 }
-.movie-info p{
+
+.movie-info p {
     width: 50%;
     margin-top: 20px;
 }

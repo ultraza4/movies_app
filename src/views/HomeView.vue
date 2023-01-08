@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <Banner :banner = "bannerMovie"/>
+    <Banner :banner="bannerMovie" />
   </div>
 </template>
 
@@ -18,7 +18,7 @@ export default {
       fetchMovies: 'home/fetchMovies',
     }),
   },
-  computed:{
+  computed: {
     ...mapState({
       movies: state => state.home.movies,
       bannerMovie: state => state.home.bannerMovie
@@ -29,9 +29,11 @@ export default {
   },
   mounted() {
     this.fetchMovies();
+    console.log(this.bannerMovie)
   },
 }
 </script>
 
 <style>
+
 </style>
