@@ -1,11 +1,9 @@
 <template>
     <div class="movie-item">
         <div class="card-image">
-            <img :src="cardImage" alt=""/>
+            <img class="image" :src="cardImage" alt="" />
             <div class="icon-wrapper">
-                <div class="icon">
-                    <Icon icon="material-symbols:play-circle-outline" width = "60"/>
-                </div>
+                <Icon icon="material-symbols:play-circle-outline" width="70" />
             </div>
         </div>
         <div class="card-info">
@@ -35,7 +33,7 @@ export default {
             return `${image}`
         },
     },
-    
+
 }
 
 </script>
@@ -47,25 +45,30 @@ export default {
     margin-top: 30px;
     width: 100%;
 }
-.card-image{
-    position: relative;
+
+.card-image {
     width: 100%;
-    max-height: fit-content;
     overflow: hidden;
+    position: relative;
 }
-img{
+
+.image {
     width: 100%;
     object-fit: fill;
     border-radius: 15px;
     transition: 0.5s;
 }
-img:hover {
-    webkit-filter: blur(4px); /* Chrome, Safari, Opera */
+
+.image:hover {
+    webkit-filter: blur(4px);
     filter: blur(4px);
     cursor: pointer;
 }
-.icon-wrapper{
+
+.icon-wrapper {
     display: flex;
+    justify-content: center;
+    color: white;
     align-items: center;
     width: 100%;
     height: 100%;
@@ -74,18 +77,10 @@ img:hover {
     left: -50%;
     top: 50%;
     transition: 0.5s;
-    transform: translate(50%,-50%);
+    transform: translate(50%, -50%);
 }
+
 .icon-wrapper:hover {
-    opacity: 100%;
-}
-.icon{
-    width: 100%;
-    color: white;
-    display: flex;
-    justify-content: center;
-}
-.icon:hover{
     opacity: 100%;
 }
 </style>

@@ -44,7 +44,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .banner_wrapper {
     width: 100%;
     height: 100vh;

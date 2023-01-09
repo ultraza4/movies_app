@@ -1,7 +1,7 @@
 <template>
     <nav class="navbar">
         <div class="icon_wrapper">
-            <Icon class="icon" icon="ri:movie-2-line" width ="40"/>
+            <Icon class="icon" icon="ri:movie-2-line" width="40" />
             <span class="icon_text">映画</span>
         </div>
         <div class="nav-items">
@@ -22,7 +22,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .navbar {
     display: flex;
     position: fixed;

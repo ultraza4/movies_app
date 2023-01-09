@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <Banner :banner="bannerMovie" />
-    <MoviesListVue :movies = "movies"/>
+    <MoviesListVue :movies="movies" />
   </div>
 </template>
 
