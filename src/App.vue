@@ -1,11 +1,17 @@
 <template>
-  <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-    <router-link to="/new">New Movies</router-link>
-  </nav>
+  <NavbarVue />
   <router-view />
 </template>
+
+<script>
+import NavbarVue from './components/Navbar.vue';
+
+export default {
+  components: {
+    NavbarVue
+  }
+}
+</script>
 
 <style>
 *{

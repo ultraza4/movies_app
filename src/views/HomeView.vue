@@ -1,17 +1,20 @@
 <template>
   <div class="home">
     <Banner :banner="bannerMovie" />
+    <MoviesListVue :movies = "movies"/>
   </div>
 </template>
 
 <script>
-import Banner from "@/components/Banner.vue"
+import Banner from "@/components/Banner.vue";
+import MoviesListVue from "@/components/MoviesList.vue";
 import { mapActions, mapGetters, mapState } from 'vuex';
 
 export default {
   name: 'HomeView',
   components: {
-    Banner
+    Banner,
+    MoviesListVue
   },
   methods: {
     ...mapActions({
@@ -29,7 +32,6 @@ export default {
   },
   mounted() {
     this.fetchMovies();
-    console.log(this.bannerMovie)
   },
 }
 </script>

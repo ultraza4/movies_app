@@ -53,7 +53,8 @@ export default {
 
 .movie-info {
     color: aliceblue;
-    padding-left: 30px;
+    width: 60%;
+    padding-left: 100px;
     display: flex;
     flex-direction: column;
     justify-content: center;

@@ -10,7 +10,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .btn{
     display: flex;
     width: fit-content;
