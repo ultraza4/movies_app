@@ -1,4 +1,4 @@
-<template>
+<template class="app">
   <NavbarVue />
   <router-view />
 </template>

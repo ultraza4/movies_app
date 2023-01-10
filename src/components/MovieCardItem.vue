@@ -1,6 +1,6 @@
 <template>
     <div class="movie-item">
-        <div class="card-image">
+        <div class="card-image" @click="$router.push(`/movie/${movie.id}`)">
             <img class="image" :src="cardImage" alt="" />
             <div class="icon-wrapper">
                 <Icon icon="material-symbols:play-circle-outline" width="70" />
@@ -50,6 +50,7 @@ export default {
     width: 100%;
     overflow: hidden;
     position: relative;
+    cursor: pointer;
 }
 
 .image {
@@ -83,4 +84,21 @@ export default {
 .icon-wrapper:hover {
     opacity: 100%;
 }
+
+.card-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: white;
+    margin-top: 10px;
+}
+.card-info span {
+    font-size: 20px;
+}
+.card-info p {
+    opacity: 70%;
+    text-align: justify;
+    margin-top: 5px;
+}
+
 </style>

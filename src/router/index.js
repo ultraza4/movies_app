@@ -13,9 +13,9 @@ const routes = [
     component: () => import('../views/AboutView.vue')
   },
   {
-    path: '/new',
-    name: 'new',
-    component: () => import('@/views/NewView.vue')
+    path: '/movie/:id',
+    name: 'movie',
+    component: () => import('@/views/MoviePage.vue')
   }
 ]
 

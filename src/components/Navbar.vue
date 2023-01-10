@@ -1,13 +1,12 @@
 <template>
-    <nav class="navbar">
+    <nav class="navbar" ref="header">
         <div class="icon_wrapper">
             <Icon class="icon" icon="ri:movie-2-line" width="40" />
-            <span class="icon_text">映画</span>
+            <span class="icon_text">iMovie</span>
         </div>
         <div class="nav-items">
             <router-link class="nav-item" to="/">HOME</router-link>
             <router-link class="nav-item" to="/about">ABOUT</router-link>
-            <router-link class="nav-item" to="/new">NEW MOVIES</router-link>
         </div>
     </nav>
 </template>
@@ -18,6 +17,21 @@ import { Icon } from '@iconify/vue';
 export default {
     components: {
         Icon
+    },
+    mounted() {
+        window.addEventListener('scroll', this.onScroll);
+    },
+    methods: {
+        onScroll() {
+            if (window.pageYOffset > 200) {
+                this.$refs.header.classList.add('header-hidden');
+            }else{
+                this.$refs.header.classList.remove('header-hidden');
+            }
+        },
+    },
+    destroyed() {
+        window.removeEventListener('scroll', this.onScroll);
     }
 }
 </script>
@@ -33,8 +47,11 @@ export default {
     left: 100px;
     top: 20px;
     border-bottom: solid 2px white;
+    transition: all .3s ease;
 }
-
+.navbar.header-hidden{
+    transform: translateY(-200%);
+}
 .nav-items {
     display: flex;
     gap: 20px;
