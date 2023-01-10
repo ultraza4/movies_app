@@ -3,7 +3,7 @@
         <div class="movie-info">
             <h1 class="movie-info_title">{{ banner.title }}</h1>
             <p>{{ this.discription }}</p>
-            <my-button>
+            <my-button @click="$router.push(`/movie/${banner.id}`)">
                 View more
             </my-button>
         </div>

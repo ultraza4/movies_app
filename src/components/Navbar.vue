@@ -1,6 +1,6 @@
 <template>
     <nav class="navbar" ref="header">
-        <div class="icon_wrapper">
+        <div class="icon_wrapper" @click="$router.push(`/`)">
             <Icon class="icon" icon="ri:movie-2-line" width="40" />
             <span class="icon_text">iMovie</span>
         </div>
@@ -25,7 +25,7 @@ export default {
         onScroll() {
             if (window.pageYOffset > 200) {
                 this.$refs.header.classList.add('header-hidden');
-            }else{
+            } else {
                 this.$refs.header.classList.remove('header-hidden');
             }
         },
@@ -49,9 +49,11 @@ export default {
     border-bottom: solid 2px white;
     transition: all .3s ease;
 }
-.navbar.header-hidden{
+
+.navbar.header-hidden {
     transform: translateY(-200%);
 }
+
 .nav-items {
     display: flex;
     gap: 20px;
@@ -76,6 +78,7 @@ export default {
     align-items: center;
     color: white;
     gap: 5px;
+    cursor: pointer;
 }
 
 .icon_text {

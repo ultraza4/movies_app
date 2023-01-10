@@ -7,8 +7,8 @@
             </div>
         </div>
         <div class="card-info">
-            <span>{{ movie.title }}</span>
-            <p>{{ movie.overview }}</p>
+            <span>{{ this.title }}</span>
+            <p>{{ this.discription }}</p>
         </div>
     </div>
 </template>
@@ -21,6 +21,12 @@ export default {
     components: {
         Icon
     },
+    data() {
+        return {
+            discription: '',
+            title: ''
+        }
+    },
     props: {
         movie: {
             type: Object,
@@ -29,7 +35,9 @@ export default {
     },
     computed: {
         cardImage() {
-            const image = getImage(this.movie.poster_path)
+            this.discription = this.movie.overview.length <= 150 ? this.movie.overview : this.movie.overview.slice(0, 150) + "...";
+            this.title = this.movie.title <= 60 ? this.movie.title : this.movie.title.slice(0, 50);
+            const image = getImage(this.movie.poster_path);
             return `${image}`
         },
     },
@@ -92,13 +100,14 @@ export default {
     color: white;
     margin-top: 10px;
 }
+
 .card-info span {
     font-size: 20px;
 }
+
 .card-info p {
     opacity: 70%;
     text-align: justify;
     margin-top: 5px;
 }
-
 </style>
