@@ -1,5 +1,7 @@
 import { createStore } from 'vuex'
-import {homeModule} from '@/store/modules/homeModule.js'
+import { homeModule } from '@/store/modules/homeModule.js'
+import { topRatedMoviesModule } from '@/store/modules/topRatedMoviesModule'
+import { latestMoviesModule } from '@/store/modules/latestMoviesModule'
 
 export default createStore({
   state: {
@@ -11,6 +13,8 @@ export default createStore({
   actions: {
   },
   modules: {
-    home: homeModule
+    home: homeModule,
+    topRated: topRatedMoviesModule,
+    latestMovies: latestMoviesModule
   }
 })

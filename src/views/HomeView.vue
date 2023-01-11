@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <Banner :banner="bannerMovie" />
-    <MoviesListVue :movies="movies" />
+    <MoviesListVue :movies="popularMovies" />
   </div>
 </template>
 
@@ -18,20 +18,20 @@ export default {
   },
   methods: {
     ...mapActions({
-      fetchMovies: 'home/fetchMovies',
+      fetchPopularMovies: 'home/fetchPopularMovies',
     }),
   },
   computed: {
     ...mapState({
-      movies: state => state.home.movies,
+      popularMovies: state => state.home.popularMovies,
       bannerMovie: state => state.home.bannerMovie
     }),
     ...mapGetters({
-      getMovies: 'home/getMovies',
+      getPopularMovies: 'home/getPopularMovies',
     })
   },
   mounted() {
-    this.fetchMovies();
+    this.fetchPopularMovies();
   },
 }
 </script>

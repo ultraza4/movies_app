@@ -6,7 +6,8 @@
         </div>
         <div class="nav-items">
             <router-link class="nav-item" to="/">HOME</router-link>
-            <router-link class="nav-item" to="/about">ABOUT</router-link>
+            <router-link class="nav-item" to="/toprated">TOP RATED</router-link>
+            <router-link class="nav-item" to="/latest">LATEST</router-link>
         </div>
     </nav>
 </template>
