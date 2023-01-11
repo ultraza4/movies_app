@@ -1,23 +1,26 @@
 <template>
   <div class="top-rated">
-    <div class="input-wrapper">
+    <!-- <div class="input-wrapper">
       <my-input 
         placeholder="Search for the movie"
         />
-    </div>
-    <MoviesList :movies="topRatedMovies"/>
+    </div> -->
+    <MoviesList :movies="topRatedMovies" />
+    <Pagination :totalPage="totalPage" />
   </div>
 </template>
 
 <script>
 import { mapActions, mapGetters, mapMutations, mapState } from 'vuex';
 import MoviesList from '@/components/MoviesList.vue';
-import MyInput from '@/components/UI/myInput.vue';
+import Pagination from '@/components/Pagination.vue';
+// import MyInput from '@/components/UI/myInput.vue';
 
 export default {
   components: {
     MoviesList,
-    MyInput
+    Pagination
+    // MyInput
   },
   methods: {
     ...mapActions({
@@ -30,7 +33,9 @@ export default {
   computed: {
     ...mapState({
       topRatedMovies: state => state.topRated.topRatedMovies,
-      searchQuery: state => state.topRated.searchQuery
+      searchQuery: state => state.topRated.searchQuery,
+      totalPage: state => state.topRated.totalPage,
+      currentPage: state => state.topRated.currentPage,
     }),
     ...mapGetters({
       getSearchedMovies: 'topRated/getSearchedMovies'
@@ -44,10 +49,11 @@ export default {
 </script>
 
 <style scoped>
-.input-wrapper{
+.input-wrapper {
   display: flex;
   justify-content: center;
 }
+
 .top-rated {
   margin-top: 100px;
 }

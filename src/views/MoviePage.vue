@@ -3,7 +3,7 @@
       <div class="movie-info-wrapper">
          <div class="movie-info">
             <div class="posterImage-wrapper">
-               <img :src="posterImage" alt=""/>
+               <img :src="posterImage" alt="" />
             </div>
             <div class="movie-description">
                <h1>{{ movie.title }}</h1>
@@ -41,7 +41,7 @@ import { Icon } from '@iconify/vue';
 export default {
    components: {
       Icon
-   }, 
+   },
    data() {
       return {
          movieId: this.$route.params.id,
@@ -56,6 +56,7 @@ export default {
             const response = await axios.get(`https://api.themoviedb.org/3/movie/${this.movieId}?api_key=4e44d9029b1270a757cddc766a1bcb63&language=en-US`)
             this.movie = response.data;
             this.bgImage = getImage(this.movie.backdrop_path)
+            console.log(this.movie)
          } catch (error) {
             console.log(error)
          }
@@ -69,7 +70,7 @@ export default {
          return getImage(this.movie.poster_path)
       },
       movieOcuntry() {
-         return 
+         return
       }
    },
    mounted() {
@@ -84,7 +85,8 @@ export default {
    width: 100vw;
    background-size: cover;
 }
-.movie-info-wrapper{
+
+.movie-info-wrapper {
    color: aliceblue;
    padding-left: 100px;
    display: flex;
@@ -92,41 +94,49 @@ export default {
    height: 100%;
    background: linear-gradient(to right, black, transparent);
 }
+
 .movie-info {
    height: 100%;
    margin-top: 80px;
    padding-top: 20px;
    display: flex;
 }
-.posterImage-wrapper{
+
+.posterImage-wrapper {
    height: max-content;
    overflow: hidden;
    width: 400px;
 }
-.posterImage-wrapper img{
+
+.posterImage-wrapper img {
    width: 400px;
    border-radius: 20px;
    object-fit: contain;
 }
-.movie-description{
+
+.movie-description {
    width: 30%;
    display: flex;
    flex-direction: column;
    margin-left: 50px;
    text-align: justify;
 }
-.movie-description h1{
+
+.movie-description h1 {
    margin: 0 auto;
 }
+
 .movie-description p {
    margin-top: 10px;
 }
+
 .movie-icons {
    display: flex;
    margin-top: 15px;
    flex-direction: column;
    gap: 15px;
 }
+
 .movie-icons-item {
    display: flex;
    gap: 5px;

@@ -3,7 +3,9 @@ import axios from "axios";
 export const topRatedMoviesModule = {
     state: () => ({
         topRatedMovies: {},
-        searchQuery: ''
+        searchQuery: '',
+        totalPage: Number,
+        currentPage: 3
     }),
     getters: {
         getTopRatedMovies(state) {
@@ -19,15 +21,21 @@ export const topRatedMoviesModule = {
         },
         setSearchQuery(state, searchQuery) {
             state.searchQuery = searchQuery
-            console.log(state.searchQuery)
+        },
+        setTotalPage(state, totalPage){
+            state.totalPage = totalPage
+        },
+        setCurrentPage(state, page){
+            state.currentPage = page
         }
     },
     actions: {
         async fetchTopRatedMovies({state,commit}) {
             try {
-                const response = await axios.get('https://api.themoviedb.org/3/movie/top_rated?api_key=4e44d9029b1270a757cddc766a1bcb63&language=en-US')
+                const response = await axios.get(`https://api.themoviedb.org/3/movie/top_rated?api_key=4e44d9029b1270a757cddc766a1bcb63&language=en-US&page=${state.currentPage}`)
                 commit("setTopRatedMovies", response.data.results);
-                console.log(state.topRatedMovies)
+                commit("setTotalPage", response.data.total_pages)
+                console.log(response.data)
             } catch (error) {
                 console.log(error)
             }
