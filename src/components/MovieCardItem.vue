@@ -10,6 +10,12 @@
             <span>{{ this.title }}</span>
             <p>{{ this.discription }}</p>
         </div>
+        <div class="movie-star">
+            <p>
+                <Icon icon="material-symbols:star-rounded" color="white"/>
+                <span>{{ movie.vote_average }}</span>
+            </p>
+        </div>
     </div>
 </template>
 
@@ -52,12 +58,13 @@ export default {
     flex-direction: column;
     margin-top: 30px;
     width: 100%;
+    position: relative;
 }
 
 .card-image {
     width: 100%;
     overflow: hidden;
-    position: relative;
+    /* position: relative; */
     cursor: pointer;
 }
 
@@ -109,5 +116,20 @@ export default {
     opacity: 70%;
     text-align: justify;
     margin-top: 5px;
+}
+.movie-star{
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    border-radius: 5px;
+    padding: 10px 10px;
+    background-color: rgb(4 120 87);
+}
+.movie-star p{
+    display: flex;
+    align-items: center;
+    justify-items: center;
+    gap: 5px;
+    color: white;
 }
 </style>
