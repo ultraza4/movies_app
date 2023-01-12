@@ -64,7 +64,7 @@ export default {
 .card-image {
     width: 100%;
     overflow: hidden;
-    /* position: relative; */
+    position: relative;
     cursor: pointer;
 }
 
@@ -90,7 +90,7 @@ export default {
     height: 100%;
     opacity: 0%;
     position: absolute;
-    left: -50%;
+    right: 50%;
     top: 50%;
     transition: 0.5s;
     transform: translate(50%, -50%);

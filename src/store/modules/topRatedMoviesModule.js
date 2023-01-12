@@ -5,7 +5,7 @@ export const topRatedMoviesModule = {
         topRatedMovies: {},
         searchQuery: '',
         totalPage: Number,
-        currentPage: 3
+        currentPage: 1
     }),
     getters: {
         getTopRatedMovies(state) {
@@ -26,7 +26,7 @@ export const topRatedMoviesModule = {
             state.totalPage = totalPage
         },
         setCurrentPage(state, page){
-            state.currentPage = page
+            state.currentPage = page;
         }
     },
     actions: {
@@ -35,7 +35,6 @@ export const topRatedMoviesModule = {
                 const response = await axios.get(`https://api.themoviedb.org/3/movie/top_rated?api_key=4e44d9029b1270a757cddc766a1bcb63&language=en-US&page=${state.currentPage}`)
                 commit("setTopRatedMovies", response.data.results);
                 commit("setTotalPage", response.data.total_pages)
-                console.log(response.data)
             } catch (error) {
                 console.log(error)
             }

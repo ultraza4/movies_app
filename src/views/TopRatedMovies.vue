@@ -6,7 +6,10 @@
         />
     </div> -->
     <MoviesList :movies="topRatedMovies" />
-    <Pagination :totalPage="totalPage" />
+    <Pagination 
+      :totalPage="totalPage" 
+      :selectedPage = "currentPage" 
+      @currentPage ="fetchNewPage"/>
   </div>
 </template>
 
@@ -27,8 +30,13 @@ export default {
       fetchTopRatedMovies: 'topRated/fetchTopRatedMovies',
     }),
     ...mapMutations({
-      setSearchQuery: 'topRated/setSearchQuery'
-    })
+      setSearchQuery: 'topRated/setSearchQuery',
+      setCurrentPage: 'topRated/setCurrentPage'
+    }),
+    fetchNewPage(page) {
+      this.setCurrentPage(page);
+      this.fetchTopRatedMovies();
+    }
   },
   computed: {
     ...mapState({
