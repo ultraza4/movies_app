@@ -6,10 +6,7 @@
         />
     </div> -->
     <MoviesList :movies="topRatedMovies" />
-    <Pagination 
-      :totalPage="totalPage" 
-      :selectedPage = "currentPage" 
-      @currentPage ="fetchNewPage"/>
+    <Pagination :totalPage="totalPage" :selectedPage="currentPage" @currentPage="fetchNewPage" />
   </div>
 </template>
 
@@ -63,6 +60,9 @@ export default {
 }
 
 .top-rated {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   margin-top: 100px;
 }
 </style>
