@@ -33,7 +33,6 @@ export default {
         async fetchMovieCast() {
             const res = await axios.get(`https://api.themoviedb.org/3/movie/${this.movie_id}/credits?api_key=4e44d9029b1270a757cddc766a1bcb63&language=en-US`)
             this.movieCast = res.data.cast.slice(0, 8)
-            console.log(this.movieCast)
         }
     },
     mounted() {
