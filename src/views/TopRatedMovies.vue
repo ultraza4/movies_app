@@ -30,9 +30,17 @@ export default {
       setSearchQuery: 'topRated/setSearchQuery',
       setCurrentPage: 'topRated/setCurrentPage'
     }),
+    scrollToTop() {
+      window.scrollTo({
+        top:0,
+        left: 0,
+        behavior: 'smooth'
+      });
+    },
     fetchNewPage(page) {
       this.setCurrentPage(page);
       this.fetchTopRatedMovies();
+      this.scrollToTop();
     }
   },
   computed: {

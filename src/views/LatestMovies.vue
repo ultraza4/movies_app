@@ -25,7 +25,12 @@ export default {
         fetchNewPage(page) {
             this.setCurrentPage(page);
             this.fetchLatestMovies();
-        }
+            this.scrollToTop();
+        },
+        scrollToTop() {
+            window.scrollTo(0, 0);
+            behavior: 'smooth'
+        },
     },
     computed: {
         ...mapState({

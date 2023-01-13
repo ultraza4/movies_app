@@ -28,6 +28,7 @@
                      <span>{{ movie.runtime }} min.</span>
                   </div>
                </div>
+               <MovieCast :movie_id="this.movieId"/>
             </div>
          </div>
       </div>
@@ -38,9 +39,12 @@
 import axios from 'axios';
 import getImage from '@/lib/getImage';
 import { Icon } from '@iconify/vue';
+import MovieCast from '@/components/MovieCast.vue';
+
 export default {
    components: {
-      Icon
+      Icon,
+      MovieCast
    },
    data() {
       return {
@@ -56,7 +60,6 @@ export default {
             const response = await axios.get(`https://api.themoviedb.org/3/movie/${this.movieId}?api_key=4e44d9029b1270a757cddc766a1bcb63&language=en-US`)
             this.movie = response.data;
             this.bgImage = getImage(this.movie.backdrop_path)
-            console.log(this.movie)
          } catch (error) {
             console.log(error)
          }
@@ -81,18 +84,18 @@ export default {
 
 <style scoped>
 .movie_page {
-   height: 100vh;
-   width: 100vw;
+   height: 100%;
+   width: 100%;
    background-size: cover;
+   background-color: #000;
 }
 
 .movie-info-wrapper {
    color: aliceblue;
-   padding-left: 100px;
    display: flex;
    flex-direction: column;
    height: 100%;
-   background: linear-gradient(to right, black, transparent);
+   background: linear-gradient(180deg,transparent,rgba(0,0,0,.009) 6.67%,rgba(0,0,0,.036) 13.33%,rgba(0,0,0,.082) 20%,rgba(0,0,0,.147) 26.67%,rgba(0,0,0,.232) 33.33%,rgba(0,0,0,.332) 40%,rgba(0,0,0,.443) 46.67%,rgba(0,0,0,.557) 53.33%,rgba(0,0,0,.668) 60%,rgba(0,0,0,.768) 66.67%,rgba(0,0,0,.853) 73.33%,rgba(0,0,0,.918) 80%,rgba(0,0,0,.964) 86.67%,rgba(0,0,0,.991) 93.33%,#000),linear-gradient(90deg,transparent 66.99%,rgba(0,0,0,.009) 69.19%,rgba(0,0,0,.036) 71.39%,rgba(0,0,0,.082) 73.59%,rgba(0,0,0,.147) 75.79%,rgba(0,0,0,.232) 77.99%,rgba(0,0,0,.332) 80.19%,rgba(0,0,0,.443) 82.4%,rgba(0,0,0,.557) 84.6%,rgba(0,0,0,.668) 86.8%,rgba(0,0,0,.768) 89%,rgba(0,0,0,.853) 91.2%,rgba(0,0,0,.918) 93.4%,rgba(0,0,0,.964) 95.6%,rgba(0,0,0,.991) 97.8%,#000),linear-gradient(270deg,transparent 66.78%,rgba(0,0,0,.009) 68.99%,rgba(0,0,0,.036) 71.21%,rgba(0,0,0,.082) 73.42%,rgba(0,0,0,.147) 75.64%,rgba(0,0,0,.232) 77.85%,rgba(0,0,0,.332) 80.07%,rgba(0,0,0,.443) 82.28%,rgba(0,0,0,.557) 84.5%,rgba(0,0,0,.668) 86.71%,rgba(0,0,0,.768) 88.93%,rgba(0,0,0,.853) 91.14%,rgba(0,0,0,.964) 95.57%,rgba(0,0,0,.991) 97.79%,#000);
 }
 
 .movie-info {
@@ -100,6 +103,7 @@ export default {
    margin-top: 80px;
    padding-top: 20px;
    display: flex;
+   justify-content: center;
 }
 
 .posterImage-wrapper {
@@ -117,9 +121,11 @@ export default {
 .movie-description {
    width: 30%;
    display: flex;
+   padding: 0px 20px 20px 20px;
    flex-direction: column;
    margin-left: 50px;
    text-align: justify;
+   background-color:  #26262695;
 }
 
 .movie-description h1 {
@@ -131,7 +137,8 @@ export default {
 }
 
 .movie-icons {
-   display: flex;
+   display: grid;
+   grid-template-columns: 1fr 1fr;
    margin-top: 15px;
    flex-direction: column;
    gap: 15px;
