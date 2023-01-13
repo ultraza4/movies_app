@@ -8,15 +8,15 @@
                     {{ actor.biography }}
                 </p>
                 <div class="actor-info-item">
-                    <span>Career:</span>
+                    <span>Career: </span>
                     <span>{{ actor.known_for_department }}</span>
                 </div>
                 <div class="actor-info-item">
-                    <span>Birth Day:</span>
+                    <span>Birth Day: </span>
                     <span>{{ actor.birthday }}</span>
                 </div>
                 <div class="actor-info-item">
-                    <span>Place of Birth</span>
+                    <span>Place of Birth: </span>
                     <span>{{ actor.place_of_birth }}</span>
                 </div>
             </div>
@@ -28,8 +28,8 @@
 import axios from 'axios';
 import { useRoute } from 'vue-router';
 
-export default{
-    data(){
+export default {
+    data() {
         return {
             route: useRoute(),
             actor: {}
@@ -49,19 +49,35 @@ export default{
 </script>
 
 <style scoped>
-.actor-page{
+.actor-page {
     width: 100%;
     height: 100%;
     margin-top: 100px;
 }
-.actor-discription{
+
+.actor-discription {
     display: flex;
-    align-items: center;
     justify-content: center;
-    justify-items: center;
-}
-.actor-discription img {
-    width: 300px;
 }
 
+.actor-discription img {
+    width: 340px;
+    object-fit: contain;
+}
+
+.actor-info {
+    width: 500px;
+    margin-left: 50px;
+    text-align: justify;
+    color: white;
+}
+
+.actor-biography {
+    margin-top: 15px;
+    font-size: large;
+}
+
+.actor-info-item {
+    margin-top: 10px;
+}
 </style>

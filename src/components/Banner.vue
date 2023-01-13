@@ -64,7 +64,6 @@ export default {
 
 .movie-info_title {
     font-size: 3rem;
-    font-family: 'Times New Roman', Times, serif;
     font-weight: bold;
 }
 

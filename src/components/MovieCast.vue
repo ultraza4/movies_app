@@ -47,6 +47,7 @@ export default {
     text-align: center;
     margin: 15px 0px;
 }
+
 .movie-cast_wrapper {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;

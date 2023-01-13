@@ -12,7 +12,7 @@
         </div>
         <div class="movie-star">
             <p>
-                <Icon icon="material-symbols:star-rounded" color="white"/>
+                <Icon icon="material-symbols:star-rounded" color="white" />
                 <span>{{ movie.vote_average }}</span>
             </p>
         </div>
@@ -117,15 +117,18 @@ export default {
     text-align: justify;
     margin-top: 5px;
 }
-.movie-star{
+
+.movie-star {
     position: absolute;
     top: 10px;
     right: 10px;
     border-radius: 5px;
     padding: 10px 10px;
     background-color: rgb(4 120 87);
+
 }
-.movie-star p{
+
+.movie-star p {
     display: flex;
     align-items: center;
     justify-items: center;
