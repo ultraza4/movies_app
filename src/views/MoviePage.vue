@@ -34,7 +34,12 @@
       </div>
       <MovieVideos :movieId="this.movieId" />
       <div class="movieFrame">
-         <iframe :src="movieURL(this.movieId)" width="100%" height="100%" frameborder="0" allowfullscreen></iframe>
+         <iframe 
+            :src="movieURL(this.movieId)" 
+            width="100%" 
+            height="100%" 
+            frameborder="0" 
+            allowfullscreen></iframe>
       </div>
    </div>
 </template>
