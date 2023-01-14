@@ -58,6 +58,7 @@ export default {
 .actor-discription {
     display: flex;
     justify-content: center;
+    align-items: flex-start;
 }
 
 .actor-discription img {

@@ -33,6 +33,9 @@
          </div>
       </div>
       <MovieVideos :movieId="this.movieId" />
+      <div class="movieFrame">
+         <iframe :src="movieURL(this.movieId)" width="100%" height="100%" frameborder="0" allowfullscreen></iframe>
+      </div>
    </div>
 </template>
 
@@ -67,6 +70,9 @@ export default {
             console.log(error)
          }
       },
+      movieURL(movie) {
+         return `https://autoembed.to/movie/tmdb/${movie}`
+      }
    },
    computed: {
       backgroundImageInlineStyle() {
@@ -150,5 +156,11 @@ export default {
    display: flex;
    gap: 5px;
    font-size: 18px;
+}
+
+.movieFrame {
+   padding: 15px 200px 30px;
+   background-color: inherit;
+   height: 550px;
 }
 </style>
