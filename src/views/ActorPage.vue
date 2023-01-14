@@ -21,10 +21,15 @@
                 </div>
             </div>
         </div>
+        <div class="credits">
+            <h4>Movies with {{ actor.name }}</h4>
+            <MoviesList :movies="credits" :discription="false" />
+        </div>
     </div>
 </template>
 
 <script>
+import MoviesList from '@/components/MoviesList.vue';
 import axios from 'axios';
 import { useRoute } from 'vue-router';
 
@@ -32,19 +37,26 @@ export default {
     data() {
         return {
             route: useRoute(),
-            actor: {}
-        }
+            actor: {},
+            credits: {}
+        };
     },
     methods: {
         async fetchActorInfo() {
-            const res = await axios.get(`https://api.themoviedb.org/3/person/${this.route.params.id}?api_key=4e44d9029b1270a757cddc766a1bcb63&language=en-US`)
-            this.actor = res.data
-            console.log(this.actor)
+            const res = await axios.get(`https://api.themoviedb.org/3/person/${this.route.params.id}?api_key=4e44d9029b1270a757cddc766a1bcb63&language=en-US`);
+            this.actor = res.data;
+        },
+        async fetchCredits() {
+            const res = await axios.get(`https://api.themoviedb.org/3/person/${this.route.params.id}/movie_credits?api_key=4e44d9029b1270a757cddc766a1bcb63&language=en-US`)
+            this.credits = res.data.cast.slice(0, 4)
+            console.log(res.data.cast.slice(0, 6));
         }
     },
     mounted() {
-        this.fetchActorInfo()
-    }
+        this.fetchActorInfo();
+        this.fetchCredits();
+    },
+    components: { MoviesList }
 }
 </script>
 
@@ -80,5 +92,17 @@ export default {
 
 .actor-info-item {
     margin-top: 10px;
+}
+
+.credits {
+    width: 60%;
+    color: white;
+    margin: 0 auto;
+    margin-bottom: 40px;
+}
+
+.credits h4 {
+    margin-top: 20px;
+    text-align: center;
 }
 </style>

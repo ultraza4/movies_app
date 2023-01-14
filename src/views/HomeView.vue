@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <Banner :banner="bannerMovie" />
-    <MoviesListVue :movies="popularMovies" />
+    <MoviesListVue :movies="popularMovies" :discription="true" />
   </div>
 </template>
 
@@ -37,4 +37,5 @@ export default {
 </script>
 
 <style>
+
 </style>

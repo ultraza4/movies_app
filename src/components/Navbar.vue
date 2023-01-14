@@ -24,7 +24,6 @@ export default {
     },
     methods: {
         onScroll() {
-
             if (window.pageYOffset > 30) {
                 this.$refs.header.classList.add('header-hidden');
             } else {

@@ -8,12 +8,12 @@
         </div>
         <div class="card-info">
             <span>{{ this.title }}</span>
-            <p>{{ this.discription }}</p>
+            <p v-if="discr">{{ this.discription }}</p>
         </div>
         <div class="movie-star">
             <p>
                 <Icon icon="material-symbols:star-rounded" color="white" />
-                <span>{{ movie.vote_average }}</span>
+                <span>{{ movie.vote_average.toFixed(1) }}</span>
             </p>
         </div>
     </div>
@@ -37,6 +37,9 @@ export default {
         movie: {
             type: Object,
             required: true
+        },
+        discr: {
+            type: Boolean
         }
     },
     computed: {

@@ -1,9 +1,6 @@
 <template>
     <div class="movies-list">
-        <MovieCardItemVue  
-            v-for="movie in movies" 
-            :movie = movie 
-            :key="movie.title"/>
+        <MovieCardItemVue v-for="movie in movies" :movie=movie :key="movie.title" :discr="discription" />
     </div>
 </template>
 
@@ -17,6 +14,9 @@ export default {
     props: {
         movies: {
             type: Object
+        },
+        discription: {
+            type: Boolean
         }
     }
 }

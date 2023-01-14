@@ -1,5 +1,6 @@
 <template>
     <div class="latest">
+        <ScrollToTopBtn />
         <MoviesList :movies="latestMovies" />
         <Pagination :totalPage="totalPage" :selectedPage="currentPage" @currentPage="fetchNewPage" />
     </div>
@@ -9,11 +10,13 @@
 import { mapActions, mapMutations, mapState } from 'vuex';
 import MoviesList from '@/components/MoviesList.vue';
 import Pagination from '@/components/Pagination.vue';
+import ScrollToTopBtn from '@/components/scrollTopBtn.vue'
 
 export default {
     components: {
         MoviesList,
-        Pagination
+        Pagination,
+        ScrollToTopBtn
     },
     methods: {
         ...mapActions({
@@ -44,7 +47,7 @@ export default {
     },
     mounted() {
         this.fetchLatestMovies();
-    },
+    }
 }
 
 </script>
@@ -55,5 +58,6 @@ export default {
     display: flex;
     flex-direction: column;
     align-items: center;
+    position: relative;
 }
 </style>

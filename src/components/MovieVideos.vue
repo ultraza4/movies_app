@@ -1,9 +1,9 @@
 <template>
-   <div class="movie-videos-wrapper">
+   <div v-if="movieVideosLength()" class="movie-videos-wrapper">
       <h3>Videos related to the movie</h3>
       <div class="movie-videos">
          <div class="video" v-for="video in movieVideos">
-            <iframe :src='videoUrl(video.key)' frameborder="0" />
+            <iframe :src='videoUrl(video.key)' frameborder="0" allowfullscreen />
             <span>{{ video.name }}</span>
          </div>
       </div>
@@ -16,7 +16,7 @@ import axios from 'axios';
 export default {
    data() {
       return {
-         movieVideos: []
+         movieVideos: [],
       }
    },
    props: {
@@ -29,11 +29,14 @@ export default {
       async fetchMoviePictures() {
          try {
             const response = await axios.get(`https://api.themoviedb.org/3/movie/${this.movieId}/videos?api_key=4e44d9029b1270a757cddc766a1bcb63&language=en-US`)
-            this.movieVideos = response.data.results.slice(0, 6);
-            console.log(this.movieVideos);
+            this.movieVideos = response.data.results.slice(0, 3);
+            console.log(this.movieVideos.length);
          } catch (error) {
             console.log(error);
          }
+      },
+      movieVideosLength() {
+         return this.movieVideos.length
       },
       videoUrl(key) {
          return `https://www.youtube.com/embed/${key}`
@@ -61,10 +64,11 @@ export default {
 .movie-videos {
    display: grid;
    grid-template-columns: 2fr 2fr 2fr;
-   margin: 0px 200px;
+   margin: 0px 250px;
    justify-items: center;
    gap: 15px;
 }
+
 .video {
    width: 100%;
    display: grid;
@@ -72,6 +76,7 @@ export default {
    justify-content: center;
    justify-items: center;
 }
+
 .video span {
    margin-top: 10px;
 }
