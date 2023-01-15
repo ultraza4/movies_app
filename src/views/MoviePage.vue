@@ -28,11 +28,11 @@
                      <span>{{ movie.runtime }} min.</span>
                   </div>
                </div>
-               <MovieCast :movie_id="this.movieId" />
+               <MovieCast />
             </div>
          </div>
       </div>
-      <MovieVideos :movieId="this.movieId" />
+      <MovieVideos />
       <div class="movieFrame">
          <iframe :src="movieURL(this.movieId)" width="100%" height="100%" frameborder="0" allowfullscreen></iframe>
       </div>
@@ -61,9 +61,9 @@ export default {
       }
    },
    methods: {
-      async fetchMovie() {
+      async fetchMovie(id) {
          try {
-            const response = await axios.get(`https://api.themoviedb.org/3/movie/${this.movieId}?api_key=4e44d9029b1270a757cddc766a1bcb63&language=en-US`)
+            const response = await axios.get(`https://api.themoviedb.org/3/movie/${id}?api_key=4e44d9029b1270a757cddc766a1bcb63&language=en-US`)
             this.movie = response.data;
             this.bgImage = getImage(this.movie.backdrop_path)
          } catch (error) {
@@ -80,13 +80,17 @@ export default {
       },
       posterImage() {
          return getImage(this.movie.poster_path)
-      },
-      movieOcuntry() {
-         return
       }
    },
-   mounted() {
-      this.fetchMovie();
+   watch: {
+      '$route.params.id': {
+         handler: function (id) {
+            this.fetchMovie(id);
+            this.movieId = id
+         },
+         deep: true,
+         immediate: true
+      }
    }
 }
 </script>
@@ -132,7 +136,6 @@ export default {
    padding: 10px 20px 20px 20px;
    flex-direction: column;
    margin-left: 50px;
-   text-align: justify;
    background-color: #26262695;
 }
 
@@ -142,6 +145,7 @@ export default {
 
 .movie-description p {
    margin-top: 10px;
+   text-align: justify;
 }
 
 .movie-icons {

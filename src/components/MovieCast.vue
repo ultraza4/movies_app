@@ -19,24 +19,25 @@
 import axios from 'axios';
 
 export default {
-    props: {
-        movie_id: {
-            type: String
-        }
-    },
     data() {
         return {
             movieCast: []
         }
     },
     methods: {
-        async fetchMovieCast() {
-            const res = await axios.get(`https://api.themoviedb.org/3/movie/${this.movie_id}/credits?api_key=4e44d9029b1270a757cddc766a1bcb63&language=en-US`)
+        async fetchMovieCast(id) {
+            const res = await axios.get(`https://api.themoviedb.org/3/movie/${id}/credits?api_key=4e44d9029b1270a757cddc766a1bcb63&language=en-US`)
             this.movieCast = res.data.cast.slice(0, 8)
         }
     },
-    mounted() {
-        this.fetchMovieCast()
+    watch: {
+        '$route.params.id': {
+            handler: function (id) {
+                this.fetchMovieCast(id);
+            },
+            deep: true,
+            immediate: true
+        }
     }
 }
 </script>

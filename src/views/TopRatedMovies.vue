@@ -1,10 +1,5 @@
 <template>
   <div class="top-rated">
-    <!-- <div class="input-wrapper">
-      <my-input 
-        placeholder="Search for the movie"
-        />
-    </div> -->
     <MoviesList :movies="topRatedMovies" />
     <Pagination :totalPage="totalPage" :selectedPage="currentPage" @currentPage="fetchNewPage" />
   </div>
@@ -14,13 +9,11 @@
 import { mapActions, mapGetters, mapMutations, mapState } from 'vuex';
 import MoviesList from '@/components/MoviesList.vue';
 import Pagination from '@/components/Pagination.vue';
-// import MyInput from '@/components/UI/myInput.vue';
 
 export default {
   components: {
     MoviesList,
     Pagination
-    // MyInput
   },
   methods: {
     ...mapActions({
@@ -32,7 +25,7 @@ export default {
     }),
     scrollToTop() {
       window.scrollTo({
-        top:0,
+        top: 0,
         left: 0,
         behavior: 'smooth'
       });

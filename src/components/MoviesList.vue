@@ -22,11 +22,12 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .movies-list {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     gap: 30px;
     margin: 0px 100px;
+
 }
 </style>

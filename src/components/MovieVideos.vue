@@ -19,16 +19,10 @@ export default {
          movieVideos: [],
       }
    },
-   props: {
-      movieId: {
-         type: Number,
-         required: true
-      }
-   },
    methods: {
-      async fetchMoviePictures() {
+      async fetchMoviePictures(id) {
          try {
-            const response = await axios.get(`https://api.themoviedb.org/3/movie/${this.movieId}/videos?api_key=4e44d9029b1270a757cddc766a1bcb63&language=en-US`)
+            const response = await axios.get(`https://api.themoviedb.org/3/movie/${id}/videos?api_key=4e44d9029b1270a757cddc766a1bcb63&language=en-US`)
             this.movieVideos = response.data.results.slice(0, 3);
             console.log(this.movieVideos.length);
          } catch (error) {
@@ -42,8 +36,14 @@ export default {
          return `https://www.youtube.com/embed/${key}`
       }
    },
-   mounted() {
-      this.fetchMoviePictures();
+   watch: {
+      '$route.params.id': {
+         handler: function (id) {
+            this.fetchMoviePictures(id);
+         },
+         deep: true,
+         immediate: true
+      }
    }
 }
 </script>
@@ -58,13 +58,12 @@ export default {
    justify-items: center;
    font-family: inherit;
    color: white;
-   gap: 10px
+   gap: 10px;
 }
 
 .movie-videos {
    display: grid;
    grid-template-columns: 2fr 2fr 2fr;
-   margin: 0px 250px;
    justify-items: center;
    gap: 15px;
 }
@@ -72,12 +71,13 @@ export default {
 .video {
    width: 100%;
    display: grid;
-   grid-template-rows: 8fr 2fr;
+   ;
    justify-content: center;
    justify-items: center;
 }
 
 .video span {
    margin-top: 10px;
+   text-align: center;
 }
 </style>
