@@ -49,10 +49,10 @@ export default {
         onScroll() {
             if (window.pageYOffset > 30) {
                 this.showNavbar = true;
-                this.showSearch = false
+                this.showSearch = false;
             } else {
-                this.showNavbar = false
-                this.showSearch = false
+                this.showNavbar = false;
+                this.showSearch = true;
             }
         },
         async fetchSearchQuery() {
@@ -60,10 +60,10 @@ export default {
                 if (this.moviesLength()) {
                     const res = await axios.get(`https://api.themoviedb.org/3/search/movie?api_key=4e44d9029b1270a757cddc766a1bcb63&language=en-US&query=${this.searchQuery}&page=1&include_adult=false`)
                     this.searchedMovies = res.data.results.slice(0, 5);
-                    console.log(this.searchedMovies)
+                    console.log(this.searchedMovies);
                 }
             } catch (error) {
-                console.log(error)
+                console.log(error);
             }
         },
         itemClick(id) {
@@ -75,7 +75,7 @@ export default {
             this.searchQuery = '';
         },
         moviesLength() {
-            return this.searchQuery.length
+            return this.searchQuery.length;
         }
     },
     destroyed() {
