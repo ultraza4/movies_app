@@ -76,7 +76,7 @@ export default {
 @media only screen and (max-device-width: 480px) {
     .banner_wrapper {
         width: 100%;
-        height: 400px;
+        height: 100vh;
         background-size: cover;
         background-position: center;
     }
