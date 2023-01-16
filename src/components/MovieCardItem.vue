@@ -138,4 +138,22 @@ export default {
     gap: 5px;
     color: white;
 }
+
+@media only screen and (max-width: 390px) {
+    .card-info p {
+        display: none;
+    }
+
+    .card-info span {
+        font-size: small;
+    }
+
+    .movie-star {
+        padding: 3px 3px;
+        background-color: rgb(4 120 87);
+        font-size: small;
+        top: 5px;
+        right: 5px;
+    }
+}
 </style>

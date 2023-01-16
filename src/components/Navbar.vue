@@ -174,4 +174,54 @@ export default {
 .movie-item:hover {
     background-color: rgb(34 197 94);
 }
+
+@media only screen and (max-width: 810px) {
+    .navbar {
+        top: 10px;
+        left: 10px;
+        right: 10px;
+    }
+
+    .nav-items-wrapper {
+        gap: 10px;
+    }
+}
+
+@media only screen and (max-width: 390px) {
+    .icon_wrapper {
+        margin-right: 5px;
+    }
+
+    .icon_wrapper span {
+        display: none
+    }
+
+    .navbar {
+        top: 10px;
+        left: 10px;
+        right: 10px;
+    }
+
+    .nav-items-wrapper {
+        gap: 10px;
+        align-self: flex-start;
+    }
+
+    .nav-items {
+        display: flex;
+        flex-direction: column;
+        justify-content: left;
+        gap: 5px;
+        margin-left: 20px;
+    }
+
+    .searchInput-wrapper {
+        align-self: flex-start;
+    }
+
+    .searchInput {
+        width: 90%;
+        padding: 8px;
+    }
+}
 </style>

@@ -3,7 +3,7 @@
         <div class="movie-info">
             <h1 class="movie-info_title">{{ banner.title }}</h1>
             <p>{{ this.discription }}</p>
-            <my-button @click="$router.push(`/movie/${banner.id}`)">
+            <my-button class="btn" @click="$router.push(`/movie/${banner.id}`)">
                 View more
             </my-button>
         </div>
@@ -70,5 +70,44 @@ export default {
 .movie-info p {
     width: 50%;
     margin-top: 20px;
+}
+
+
+@media only screen and (max-width: 390px) {
+    .banner_wrapper {
+        width: 100%;
+        height: 400px;
+        background-size: cover;
+        background-position: center;
+    }
+
+    .movie-info {
+        padding-left: 50px;
+    }
+
+    .movie-info_title {
+        font-size: large;
+    }
+
+    .movie-info p {
+        display: none;
+    }
+
+    .movie-info .btn {
+        padding: 15px 10px;
+    }
+}
+
+@media only screen and (max-width: 810px) {
+    .banner_wrapper {
+        width: 100%;
+        height: 600px;
+        background-size: 80% 80% cover;
+        background-position: center;
+    }
+
+    .movie-info {
+        padding-left: 50px;
+    }
 }
 </style>

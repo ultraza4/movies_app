@@ -28,6 +28,14 @@ export default {
     grid-template-columns: 1fr 1fr 1fr 1fr;
     gap: 30px;
     margin: 0px 100px;
+}
 
+@media only screen and (max-width: 390px) {
+    .movies-list {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 10px;
+        margin: 0px 20px;
+    }
 }
 </style>
