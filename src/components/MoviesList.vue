@@ -30,7 +30,7 @@ export default {
     margin: 0px 100px;
 }
 
-@media only screen and (max-width: 390px) {
+@media only screen and (max-device-width: 480px) {
     .movies-list {
         display: grid;
         grid-template-columns: 1fr 1fr 1fr;

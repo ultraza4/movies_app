@@ -139,7 +139,7 @@ export default {
     color: white;
 }
 
-@media only screen and (max-width: 390px) {
+@media only screen and (max-device-width: 480px) {
     .card-info p {
         display: none;
     }
