@@ -40,4 +40,10 @@ export default {
 .scroll-btn-hidden {
    display: none;
 }
+
+@media only screen and (max-device-width: 480px){
+   .scroll-btn{
+      display: none;
+   }
+}
 </style>

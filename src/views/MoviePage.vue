@@ -34,7 +34,7 @@
       </div>
       <MovieVideos />
       <div class="movieFrame">
-         <iframe :src="movieURL(this.movieId)" width="100%" height="100%" frameborder="0" allowfullscreen></iframe>
+         <iframe :src="movieURL(this.movieId)" width="90%" frameborder="0" allowfullscreen></iframe>
       </div>
    </div>
 </template>
@@ -166,5 +166,49 @@ export default {
    padding: 15px 250px 50px;
    background-color: inherit;
    height: 550px;
+}
+
+@media only screen and (max-device-width: 480px) {
+   .movie-info {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      width: 100%;
+      background-color: inherit;
+   }
+
+   .movie-description {
+      width: 90%;
+      display: flex;
+      padding: 10px;
+      flex-direction: column;
+      margin: 0 10px;
+      background-color: #26262695;
+   }
+
+   .posterImage-wrapper img {
+      width: 100%;
+      border-radius: 10px;
+      object-fit: contain;
+   }
+
+   .posterImage-wrapper {
+      height: max-content;
+      overflow: hidden;
+      margin: 0 auto;
+   }
+
+   .movie-icons-item {
+      font-size: medium;
+   }
+
+   .movieFrame {
+      display: flex;
+      justify-content: center;
+      padding: 0;
+      padding-bottom: 20px;
+      background-color: inherit;
+      height: 300px;
+   }
 }
 </style>

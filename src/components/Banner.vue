@@ -78,7 +78,8 @@ export default {
         width: 100%;
         height: 100vh;
         background-size: cover;
-        background-position: center;
+        background-position: center center;
+        background-repeat: no-repeat;
     }
 
     .movie-info {

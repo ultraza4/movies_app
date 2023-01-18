@@ -6,7 +6,7 @@
         </div>
         <div class="nav-items">
             <div class="nav-items-wrapper">
-                <router-link class="nav-item" to="/">HOME</router-link>
+                <router-link class="nav-item home" to="/">HOME</router-link>
                 <router-link class="nav-item" to="/toprated">TOP RATED </router-link>
                 <router-link class="nav-item" to="/latest">LATEST</router-link>
             </div>
@@ -202,26 +202,25 @@ export default {
         right: 10px;
     }
 
-    .nav-items-wrapper {
-        gap: 10px;
-        align-self: flex-start;
-    }
-
     .nav-items {
         display: flex;
-        flex-direction: column;
-        justify-content: left;
+        justify-items: center;
         gap: 5px;
         margin-left: 20px;
+        align-items: center;
+    }
+    .nav-item.home{
+        display: none;
     }
 
     .searchInput-wrapper {
-        align-self: flex-start;
+        align-self: flex-end;
     }
 
     .searchInput {
         width: 90%;
         padding: 8px;
+        background-color: #68676795;
     }
 }
 </style>
