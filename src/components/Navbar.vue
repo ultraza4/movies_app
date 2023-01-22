@@ -209,7 +209,8 @@ export default {
         margin-left: 20px;
         align-items: center;
     }
-    .nav-item.home{
+
+    .nav-item.home {
         display: none;
     }
 
@@ -220,7 +221,6 @@ export default {
     .searchInput {
         width: 90%;
         padding: 8px;
-        background-color: #68676795;
     }
 }
 </style>

@@ -34,7 +34,7 @@
       </div>
       <MovieVideos />
       <div class="movieFrame">
-         <iframe :src="movieURL(this.movieId)" width="90%" frameborder="0" allowfullscreen></iframe>
+         <iframe :src="movieURL(this.movieId)" width="100%" height="100%" frameborder="0" allowfullscreen></iframe>
       </div>
    </div>
 </template>
@@ -204,6 +204,7 @@ export default {
 
    .movieFrame {
       display: flex;
+      padding: 15px;
       justify-content: center;
       padding: 0;
       padding-bottom: 20px;
