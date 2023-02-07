@@ -1,5 +1,5 @@
 import { createStore } from 'vuex'
-import { homeModule } from '@/store/modules/homeModule.js'
+import { homeModule } from '@/store/modules/homeModule'
 import { topRatedMoviesModule } from '@/store/modules/topRatedMoviesModule'
 import { latestMoviesModule } from '@/store/modules/latestMoviesModule'
 

@@ -1,3 +1,3 @@
-export default function getImage(src) {
+export default function getImage(src: string): string {
     return `https://image.tmdb.org/t/p/original${src}`
 }

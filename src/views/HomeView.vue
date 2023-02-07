@@ -9,7 +9,6 @@
 import Banner from "@/components/Banner.vue";
 import MoviesListVue from "@/components/MoviesList.vue";
 import { mapActions, mapGetters, mapState } from 'vuex';
-
 export default {
   name: 'HomeView',
   components: {

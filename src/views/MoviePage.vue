@@ -34,19 +34,21 @@
       </div>
       <MovieVideos />
       <div class="movieFrame">
-         <iframe :src="movieURL(this.movieId)" width="100%" height="100%" frameborder="0" allowfullscreen></iframe>
+         <iframe :src="movieURL(movieId)" width="100%" height="100%" frameborder="0" allowfullscreen></iframe>
       </div>
    </div>
 </template>
 
-<script>
+<script lang="ts">
+import { defineComponent } from 'vue';
 import axios from 'axios';
 import getImage from '@/lib/getImage';
 import { Icon } from '@iconify/vue';
 import MovieCast from '@/components/MovieCast.vue';
-import MovieVideos from '@/components/MovieVideos.vue'
+import MovieVideos from '@/components/MovieVideos.vue';
+import { MoviePageType } from '@/types/moviePageTypes';
 
-export default {
+export default defineComponent({
    components: {
       Icon,
       MovieCast,
@@ -54,31 +56,31 @@ export default {
    },
    data() {
       return {
-         movieId: this.$route.params.id,
-         movie: {},
-         bgImage: '',
-         country: ''
+         movieId: this.$route.params.id as string,
+         movie: {} as MoviePageType,
+         bgImage: new String,
+         country: new String
       }
    },
    methods: {
-      async fetchMovie(id) {
+      async fetchMovie(id: Number): Promise<void> {
          try {
-            const response = await axios.get(`https://api.themoviedb.org/3/movie/${id}?api_key=4e44d9029b1270a757cddc766a1bcb63&language=en-US`)
+            const response = await axios.get<MoviePageType>(`https://api.themoviedb.org/3/movie/${id}?api_key=4e44d9029b1270a757cddc766a1bcb63&language=en-US`)
             this.movie = response.data;
             this.bgImage = getImage(this.movie.backdrop_path)
          } catch (error) {
             console.log(error)
          }
       },
-      movieURL(movie) {
-         return `https://autoembed.to/movie/tmdb/${movie}`
+      movieURL: (movieId: string): string => {
+         return `https://autoembed.to/movie/tmdb/${movieId}`
       }
    },
    computed: {
-      backgroundImageInlineStyle() {
+      backgroundImageInlineStyle(): string {
          return `background-image: url(${this.bgImage})`
       },
-      posterImage() {
+      posterImage(): string {
          return getImage(this.movie.poster_path)
       }
    },
@@ -92,7 +94,7 @@ export default {
          immediate: true
       }
    }
-}
+})
 </script>
 
 <style scoped>
